@@ -1,0 +1,11 @@
+pip~=25.1.1
+fastapi~=0.115.12
+uvicorn
+gunicorn
+sqlmodel
+pydantic
+sqlalchemy
+timescaledb
+requests
+python-decouple
+psycopg[binary]
