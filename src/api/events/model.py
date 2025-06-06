@@ -1,12 +1,22 @@
 from typing import List, Optional
-#from pydantic import BaseModel, Field
+import sqlmodel
+from datetime import datetime, timezone
 from sqlmodel import SQLModel, Field
+
+
+def get_utc_now():
+    return datetime.now(timezone.utc).replace(tzinfo=timezone.utc)
 
 
 class EventModel(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     page: Optional[str] = ""
     description: Optional[str] = ""
+    created_at: datetime = Field(
+        default_factory=get_utc_now,
+        sa_type=sqlmodel.DateTime(timezone=True),
+        nullable=False
+    )
 
 
 class EventListSchema(SQLModel):
