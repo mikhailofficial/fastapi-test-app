@@ -7,7 +7,7 @@ from api.events import router as event_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # before app startup
-    print("123")
+    #print("123")
     init_db()
     yield
     # clean up
